@@ -7,3 +7,6 @@ SOURCES += main.c
 
 HEADERS +=
 
+OTHER_FILES += \
+    OTHER.txt
+

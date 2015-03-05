@@ -1,0 +1,24 @@
+Similar to select() statement there is other one called pselect().
+
+eg)
+#define _XOPEN_SOURCE 600
+#include <sys/select.h>
+
+int pselect(int n,
+            fd_set *readfds,
+            fd_set *writefds,
+            fd_set *exceptfds,
+            const struct timespec *timeout,
+            const sigset_t *sigmask;
+            );
+
+The two main difference between select and pselect is
+
+1) it uses a structure called timespec unlike select which uses timeval
+   struct timespec{
+      long tv_sec;
+      long tv_nsec;
+   }
+
+2) sigset_t *sigmask is used to avoid race conditions between waiting on files for IO when this argument is
+   set to NULL this pselect() behaves as select()
