@@ -16,7 +16,7 @@ int main(void)
     char* msg="hey hello how are you this is some crap in this file so please ignore it\n";
     off_t ret;
     ssize_t bits;
-    char* buf;
+    char buf[123];
     close(fd);
     /*O_SYNC flag enables us to open a file in synchronous way i.e sync the read writes files with the buffer.*/
     fd=open("newtext.txt",O_RDWR|O_SYNC);
@@ -32,7 +32,7 @@ int main(void)
     printf("%d has moved\n",ret);
 
     /*POSTITIONAL READS AND WRITES*/
-    bits=pread(fd,buf,20,2);
+    bits=pread(fd,buf,10,2);
     if(bits==-1)
         perror("error while reading a the give position");
     printf(buf);
